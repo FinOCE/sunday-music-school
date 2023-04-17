@@ -1,2 +1,0 @@
-Date  | Start | End   | Activities
-17/04   12:46 | ??:?? | Create nextjs app with web form for lesson request
