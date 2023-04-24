@@ -2,7 +2,7 @@ import { useState } from "react"
 
 type ButtonProps = {
   children?: React.ReactNode
-  href: string
+  onClick: () => void
   invert?: boolean
 }
 
@@ -10,14 +10,14 @@ export default function Button(props: ButtonProps) {
   const [pressed, isPressed] = useState(false)
 
   return (
-    <a
-      className={`inline-block border-b-4 ${
+    <div
+      className={`cursor-pointer shadow-lg inline-block border-b-4 ${
         props.invert ? "border-[#aaa] text-white" : "border-[#555] text-black"
       } rounded-xl font-black`}
       onMouseDown={() => isPressed(true)}
       onMouseUp={() => isPressed(false)}
       onMouseLeave={() => isPressed(false)}
-      href={props.href}
+      onClick={props.onClick}
     >
       <div
         className={`text-center inline-block border-2 ${
@@ -26,6 +26,38 @@ export default function Button(props: ButtonProps) {
       >
         {props.children}
       </div>
-    </a>
+    </div>
+  )
+}
+
+type SubmitButtonProps = {
+  children?: string
+  invert?: boolean
+}
+
+export function SubmitButton(props: SubmitButtonProps) {
+  const [pressed, isPressed] = useState(false)
+
+  return (
+    <div
+      className={`shadow-lg inline-block border-b-4 ${
+        props.invert ? "border-[#aaa] text-white" : "border-[#555] text-black"
+      } rounded-xl font-black`}
+      onMouseDown={() => isPressed(true)}
+      onMouseUp={() => isPressed(false)}
+      onMouseLeave={() => isPressed(false)}
+    >
+      <div
+        className={`text-center inline-block border-2 ${
+          props.invert ? "border-white" : "border-black"
+        } rounded-xl relative ${pressed ? "top-[5px]" : "top-1"}`}
+      >
+        <input
+          type="submit"
+          value={props.children}
+          className="p-5 cursor-pointer"
+        />
+      </div>
+    </div>
   )
 }
