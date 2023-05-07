@@ -46,7 +46,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="max-w-[400px] my-10">
+            <div className="max-w-[400px] my-10 dark:hidden">
               <div
                 style={{
                   boxShadow: "0 0 20px 20px #fff inset"
@@ -66,7 +66,7 @@ export default function Home() {
             <div className="relative text-white mt-10 pt-10 px-[12.5vw] bg-black text-center">
               <h2 className="text-5xl sm:text-8xl font-bold mb-10 mt-10">
                 Music Is
-                <span className="text-black">.</span>
+                <span className="inline-block w-4" />
                 <br />
                 <GradientText>Powerful.</GradientText>
               </h2>
