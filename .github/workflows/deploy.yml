@@ -24,3 +24,5 @@ jobs:
           app_location: "/"
           api_location: "/src/pages/api"
           output_location: ""
+        env:
+          IS_STATIC_EXPORT: true
