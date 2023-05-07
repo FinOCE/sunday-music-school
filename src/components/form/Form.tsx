@@ -18,6 +18,7 @@ export default function Form() {
   const [onboarder, setOnboarder] = useState("")
 
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   return (
     <form
@@ -25,6 +26,7 @@ export default function Form() {
         e.preventDefault()
 
         setLoading(true)
+        setError(false)
 
         await fetch("/api/email", {
           method: "POST",
@@ -45,7 +47,12 @@ export default function Form() {
             extra,
             onboarder
           })
-        }).then(() => setLoading(false))
+        })
+          .then(res => {
+            if (res.status !== 202) setError(true)
+            setLoading(false)
+          })
+          .catch(err => setError(true))
       }}
     >
       <p>
@@ -298,6 +305,14 @@ export default function Form() {
 
       <br />
       <SubmitButton disabled={loading}>Submit Request</SubmitButton>
+      {error && (
+        <p className="mt-5 text-red-500">
+          Sorry, but something went wrong trying to submit your request. Please
+          send an email to{" "}
+          <a href="mailto:yumasteve882@hotmail.com">yumasteve882@hotmail.com</a>{" "}
+          directly to request a lesson.
+        </p>
+      )}
     </form>
   )
 }

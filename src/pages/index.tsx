@@ -1,6 +1,7 @@
 import Button from "@/components/Button"
 import DashSeparator from "@/components/DashSeparator"
 import GradientText from "@/components/GradientText"
+import NoteRain from "@/components/NoteRain"
 import Form from "@/components/form/Form"
 import Container from "@/components/layout/Container"
 import { Inter, Satisfy } from "next/font/google"
@@ -13,34 +14,47 @@ export default function Home() {
     <main className={`${inter.className}`}>
       <section className="pb-10">
         <Container>
-          <div className="mx-[12.5vw] mt-[10vw] mb-[40vh]">
-            <h1 className="text-5xl font-bold">Sunday Piano Lessons</h1>
-            <p className="mt-3 mb-5 md:w-[500px] sm:w-full">
-              Fuel your piano passion with lessons suited to all ages, levels,
-              and musical interests right here in{" "}
-              <strong>South Brisbane</strong>.
-            </p>
-            <div className="flex gap-2">
-              <Button
-                onClick={() => {
-                  document
-                    .getElementById("request")!
-                    .scrollIntoView({ behavior: "smooth", block: "start" })
-                }}
-              >
-                Request Lessons
-              </Button>
-              <Button
-                onClick={() => {
-                  document
-                    .getElementById("teacher")!
-                    .scrollIntoView({ behavior: "smooth", block: "start" })
-                }}
-              >
-                Meet Yuma
-              </Button>
+          <div className="mx-[12.5vw] mt-[10vw] mb-[15vh] flex flex-col lg:flex-row items-center justify-between">
+            <div className="bg-gradient-to-t lg:bg-gradient-to-r from-blue-600 from-[25%] lg:from-[0%] via-yellow-500 via-[50%] lg:via-[16%] via-green-500 via-[75%] lg:via-[33%] to-transparent to-[100%] lg:to-[50%] w-[100%] h-[500px] lg:h-[150%] absolute -bottom-[15%] lg:top-0 left-0 opacity-[0.3]" />
+            <NoteRain />
+            <div className="z-10">
+              <h1 className="text-5xl font-bold">Learn to Play Piano!</h1>
+              <p className="mt-3 mb-5 md:w-[500px] sm:w-full">
+                Fuel your piano passion with lessons suited to all ages, levels,
+                and musical interests right here in{" "}
+                <strong>South Brisbane</strong>.
+              </p>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => {
+                    document
+                      .getElementById("request")!
+                      .scrollIntoView({ behavior: "smooth", block: "start" })
+                  }}
+                >
+                  Request Lessons
+                </Button>
+                <Button
+                  onClick={() => {
+                    document
+                      .getElementById("teacher")!
+                      .scrollIntoView({ behavior: "smooth", block: "start" })
+                  }}
+                >
+                  Meet Yuma
+                </Button>
+              </div>
             </div>
-            <p className="text-right">Some cool photo here ig</p>
+            <div className="max-w-[400px] my-10">
+              <div
+                style={{
+                  boxShadow: "0 0 20px 20px #fff inset"
+                }}
+                className="overflow-hidden rounded-[20%]"
+              >
+                <img src="/ai_piano.png" className="-z-10 relative" />
+              </div>
+            </div>
           </div>
         </Container>
       </section>
