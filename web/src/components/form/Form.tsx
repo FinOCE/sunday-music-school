@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Required from "./Required"
 import { SubmitButton } from "../Button"
 
@@ -19,6 +19,13 @@ export default function Form() {
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+  const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    const lastSent = localStorage.getItem("sent")
+    if (Number(lastSent ?? 0) > Date.now() - 1000 * 60 * 60) setSuccess(true)
+    else localStorage.removeItem("sent")
+  })
 
   return (
     <form
@@ -50,6 +57,10 @@ export default function Form() {
         })
           .then(res => {
             if (res.status !== 202) setError(true)
+            else {
+              setSuccess(true)
+              localStorage.setItem("sent", Date.now().toString())
+            }
             setLoading(false)
           })
           .catch(err => setError(true))
@@ -304,7 +315,14 @@ export default function Form() {
       </section>
 
       <br />
-      <SubmitButton disabled={loading}>Submit Request</SubmitButton>
+      <SubmitButton disabled={loading || success}>Submit Request</SubmitButton>
+      {success && (
+        <p className="mt-5 text-green-500">
+          Thank you for submitting a request for lessons! You should receive an
+          email confirming your request has been sent, and will receive a follow
+          up from Yuma soon.
+        </p>
+      )}
       {error && (
         <p className="mt-5 text-red-500">
           Sorry, but something went wrong trying to submit your request. Please
