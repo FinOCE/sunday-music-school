@@ -15,8 +15,8 @@ export default function Home() {
     <main className={`${inter.className}`}>
       <section className="pb-10">
         <Container>
-          <div className="mx-[12.5vw] mt-[10vw] mb-[15vh] flex flex-col lg:flex-row items-center justify-between">
-            <div className="bg-gradient-to-t lg:bg-gradient-to-r from-blue-600 from-[25%] lg:from-[0%] via-yellow-500 via-[50%] lg:via-[16%] via-green-500 via-[75%] lg:via-[33%] to-transparent to-[100%] lg:to-[50%] w-[100%] h-[500px] lg:h-[150%] absolute -bottom-[15%] lg:top-0 left-0 opacity-[0.3]" />
+          <div className="px-[12.5vw] pt-[10vw] pb-[15vh] flex flex-col lg:flex-row items-center justify-between relative">
+            <div className="bg-gradient-to-t lg:bg-gradient-to-r from-blue-600 from-[25%] lg:from-[0%] via-yellow-500 via-[50%] lg:via-[16%] via-green-500 via-[75%] lg:via-[33%] to-transparent to-[100%] lg:to-[50%] w-[100%] h-[110%] absolute -bottom-[30%] lg:top-0 left-0 opacity-[0.3]" />
             <NoteRain />
             <div className="z-10">
               <h1 className="text-5xl font-bold">Learn to Play Piano!</h1>
@@ -156,7 +156,7 @@ export default function Home() {
       <section id="request">
         <Container>
           <div className="px-[12.5vw]">
-            <h2 className="px-[12.5vw] mt-[80px] mb-10 text-center text-5xl font-black">
+            <h2 className="mt-[80px] mb-10 text-center text-5xl font-black">
               Request Lessons
             </h2>
             <p>
