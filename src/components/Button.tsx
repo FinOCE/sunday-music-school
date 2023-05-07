@@ -33,6 +33,7 @@ export default function Button(props: ButtonProps) {
 type SubmitButtonProps = {
   children?: string
   invert?: boolean
+  disabled?: boolean
 }
 
 export function SubmitButton(props: SubmitButtonProps) {
@@ -42,7 +43,9 @@ export function SubmitButton(props: SubmitButtonProps) {
     <div
       className={`shadow-lg inline-block border-b-4 ${
         props.invert ? "border-[#aaa] text-white" : "border-[#555] text-black"
-      } rounded-xl font-black`}
+      } rounded-xl font-black ${
+        props.disabled ? "cursor-default opacity-[0.5]" : "cursor-pointer"
+      }`}
       onMouseDown={() => isPressed(true)}
       onMouseUp={() => isPressed(false)}
       onMouseLeave={() => isPressed(false)}
@@ -55,7 +58,8 @@ export function SubmitButton(props: SubmitButtonProps) {
         <input
           type="submit"
           value={props.children}
-          className="p-5 cursor-pointer"
+          className="p-5"
+          disabled={props.disabled}
         />
       </div>
     </div>

@@ -17,26 +17,35 @@ export default function Form() {
   const [extra, setExtra] = useState("")
   const [onboarder, setOnboarder] = useState("")
 
+  const [loading, setLoading] = useState(false)
+
   return (
     <form
-      onSubmit={e => {
+      onSubmit={async e => {
         e.preventDefault()
 
-        console.log({
-          name,
-          email,
-          number,
-          lessonsFor,
-          childName,
-          experience,
-          lessonsBefore,
-          interests,
-          availability,
-          extra,
-          onboarder
-        })
+        setLoading(true)
 
-        // TODO: Send above as email with SendGrid
+        await fetch("/api/email", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            number,
+            lessonsFor,
+            childName,
+            experience,
+            lessonsBefore,
+            interests,
+            availability,
+            extra,
+            onboarder
+          })
+        }).then(() => setLoading(false))
       }}
     >
       <p>
@@ -288,7 +297,7 @@ export default function Form() {
       </section>
 
       <br />
-      <SubmitButton>Submit Request</SubmitButton>
+      <SubmitButton disabled={loading}>Submit Request</SubmitButton>
     </form>
   )
 }
