@@ -3,7 +3,7 @@ import styles from "./NoteRain.module.css"
 
 export default function NoteRain() {
   return (
-    <div className="absolute top-0 left-0 w-[100%] h-[100%]">
+    <div className="absolute top-0 left-0 w-[100%] h-[100%] overflow-hidden">
       {Array.from({ length: 20 }).map((v, i) => (
         <Note
           type={i % 2 === 0 ? 1 : 2}

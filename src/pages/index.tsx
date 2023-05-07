@@ -1,5 +1,6 @@
 import Button from "@/components/Button"
 import DashSeparator from "@/components/DashSeparator"
+import Footer from "@/components/Footer"
 import GradientText from "@/components/GradientText"
 import NoteRain from "@/components/NoteRain"
 import Form from "@/components/form/Form"
@@ -172,6 +173,7 @@ export default function Home() {
           </div>
         </Container>
       </section>
+      <Footer />
     </main>
   )
 }
