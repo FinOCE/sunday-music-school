@@ -12,6 +12,8 @@ const inter = Inter({ subsets: ["latin"] })
 const satisfy = Satisfy({ subsets: ["latin"], weight: ["400"] })
 
 export default function Home() {
+  const useForm = false
+
   return (
     <>
       <Head />
@@ -164,17 +166,54 @@ export default function Home() {
               <h2 className="mt-[80px] mb-10 text-center text-5xl font-black">
                 Request Lessons
               </h2>
-              <p>
-                Ready to get started? Please fill out the form below to express
-                your interest in receiving lessons. Whether or not lessons will
-                be available at a given time is subject to change, so please
-                make sure to give a time range that works for you, and we can
-                follow up if need be.
-              </p>
-              <br />
-              <div className="mb-[80px]">
-                <Form />
-              </div>
+              {useForm ? (
+                <>
+                  <p>
+                    Ready to get started? Please fill out the form below to
+                    express your interest in receiving lessons. Whether or not
+                    lessons will be available at a given time is subject to
+                    change, so please make sure to give a time range that works
+                    for you, and we can follow up if need be. We look forward to
+                    see you soon!
+                  </p>
+                  <br />
+                  <div className="mb-[80px]">
+                    <Form />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Ready to get started? Please contact Yuma through one of the
+                    methods below to express your interest in receiving lessons.
+                    Whether or not lessons will be available at a given time is
+                    subject to change, so please make sure to give a time range
+                    that works for you, and we can follow up if need be. We look
+                    forward to see you soon!
+                  </p>
+                  <br />
+                  <div className="flex flex-col gap-2 items-center mb-10">
+                    <p>
+                      Email:{" "}
+                      <a
+                        href="mailto:yumasteve882@gmail.com"
+                        className="text-blue-600 font-bold"
+                      >
+                        yumasteve882@gmail.com
+                      </a>
+                    </p>
+                    <p>
+                      Mobile:{" "}
+                      <a
+                        href="tel:0467221668"
+                        className="text-blue-600 font-bold"
+                      >
+                        0467 221 668
+                      </a>
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           </Container>
         </section>
